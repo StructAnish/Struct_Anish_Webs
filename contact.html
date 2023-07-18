@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Slideshow with Contact Form</title>
+  <style>
+    /* Slideshow styles */
+    nav{
+      display:flex;
+      background-color: lightblue;  
+      position: relative;
+      justify-content: space-between;
+    }   
+    nav ul{
+        list-style: none;
+        display: flex;
+        padding: 1rem 1rem;
+    }
+    nav a{
+        list-style: none;
+        text-decoration: none;
+        color: black;
+    }
+    .slideshow {
+      position: relative;
+      margin: auto;
+      width: 25%;
+      height: 400px;
+      overflow: hidden;
+    }
+    
+    .slideshow img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    
+    .slideshow img.active {
+      opacity: 1;
+    }
+    
+    /* Contact form styles */
+    .contact-form {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .contact-form label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    
+    .contact-form input[type="text"],
+    .contact-form textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    .contact-form input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+    <nav>
+        <h3 class = "webname">My Portfolio</h4>
+        <ul>
+            <li>
+               <a href="index.html"> home </a>
+            </li>
+        </ul>
+    </nav>
+  <div class="slideshow">
+    <img src="pic/b4d71b0f-a6db-4844-a5b8-3c24dbfad300.jfif" alt="Slide 1" class="active">
+    <img src="pic/download (2).jfif" alt="Slide 2">
+    <img src="pic/EYE FOR I.jfif" alt="Slide 3">
+    <img src="pic/vagabond Musashi Miyamoto.jfif" alt="Slide 4">
+    <img src="pic/Vagabond Mushahshi.jfif" alt="Slide 5">
+  </div>
+
+  <div class="contact-form">
+    <h2>Contact Us</h2>
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email" required>
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+  <script>
+    // Slideshow functionality
+    const images = document.querySelectorAll('.slideshow img');
+    let currentIndex = 0;
+
+    function showImage(index) {
+      images.forEach((image) => {
+        image.classList.remove('active');
+      });
+
+      images[index].classList.add('active');
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+    }
+
+    setInterval(nextSlide, 5000);
+  </script>
+</body>
+</html>
